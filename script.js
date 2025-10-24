@@ -286,4 +286,4 @@ const API_URL = 'https://api-resultados-betano.vercel.app/api';
         }
 
         carregarResultados();
-        setInterval(carregarResultados, 6000);
+        setInterval(carregarResultados, 60000);
