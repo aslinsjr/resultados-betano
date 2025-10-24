@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betano - Resultados</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Betano - Resultados ao Vivo</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="mudarAba('resultados')">📊 Resultados</button>
+            <button class="tab" onclick="mudarAba('estatisticas')">📈 Estatísticas</button>
+        </div>
+
+        <!-- ABA RESULTADOS -->
+        <div id="resultados" class="tab-content active">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total de Jogos</h3>
+                    <div class="number" id="totalJogos">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Última Atualização</h3>
+                    <div class="number" id="ultimaAtualizacao" style="font-size: 16px;">-</div>
+                </div>
+            </div>
+
+            <button onclick="carregarResultados()">🔄 Atualizar Resultados</button>
+
+            <div id="loading" class="loading" style="display: none;">Carregando...</div>
+            
+            <table id="tabelaResultados" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Time Casa</th>
+                        <th>Placar</th>
+                        <th>Time Fora</th>
+                        <th>Intervalo</th>
+                        <th>Extraído em</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- ABA ESTATÍSTICAS -->
+        <div id="estatisticas" class="tab-content">
+            <button onclick="carregarEstatisticas()">🔄 Atualizar Estatísticas</button>
+            <button class="btn-ia" onclick="abrirModalIA()">🤖 Previsão com IA</button>
+
+            <div id="loadingStats" class="loading" style="display: none;">Carregando estatísticas...</div>
+
+            <div id="statsContent" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total de Gols</h3>
+                        <div class="number" id="totalGols">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Média de Gols/Jogo</h3>
+                        <div class="number small-number" id="mediaGols">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Jogos Analisados</h3>
+                        <div class="number" id="jogosAnalisados">-</div>
+                    </div>
+                </div>
+
+                <h2 style="margin: 30px 0 20px 0;">🎯 Sequências</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Maior Sequência &lt; 3 Gols</h3>
+                        <div class="number" id="seqMenor3">-</div>
+                        <small style="color: #888;">jogos consecutivos</small>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Maior Sequência ≥ 3 Gols</h3>
+                        <div class="number" id="seqMaior3">-</div>
+                        <small style="color: #888;">jogos consecutivos</small>
+                    </div>
+                </div>
+
+                <h2 style="margin: 30px 0 20px 0;">📊 Estatísticas Detalhadas de Gols</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Under 2.5 Gols</h3>
+                        <div class="number small-number" id="under25">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Over 2.5 Gols</h3>
+                        <div class="number small-number" id="over25">-</div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 20px 0 10px 0;">Distribuição por Gols</h3>
+                <div class="distribution" id="distribuicao"></div>
+
+                <h2 style="margin: 30px 0 20px 0;">🔥 Detalhes das Sequências</h2>
+                
+                <div class="sequence-box">
+                    <h3>Sequência &lt; 3 Gols (<span id="seqMenorTamanho">0</span> jogos)</h3>
+                    <div id="seqMenorDetalhes"></div>
+                </div>
+
+                <div class="sequence-box">
+                    <h3>Sequência ≥ 3 Gols (<span id="seqMaiorTamanho">0</span> jogos)</h3>
+                    <div id="seqMaiorDetalhes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PREVISÃO IA -->
+    <div id="modalIA" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalIA()">&times;</span>
+            
+            <div class="modal-header">
+                <h2>🤖 Análise e Previsão com IA</h2>
+            </div>
+
+            <div id="loadingIA" class="loading" style="display: none;">
+                Analisando dados com IA...<br>
+                <small>Isso pode levar alguns segundos</small>
+            </div>
+
+            <div id="contentIA"></div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
